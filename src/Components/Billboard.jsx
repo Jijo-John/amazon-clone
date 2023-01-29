@@ -37,7 +37,7 @@ const BillboardContainer = styled.div`
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1),rgba(0,0,0,0));
     position: relative;
     z-index: -1;
-    margin-bottom: -150px;
+    margin-bottom: -25%;
 `;
 
 const Slider = styled.div`
