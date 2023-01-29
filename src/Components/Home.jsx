@@ -2,7 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import Billboard from './Billboard';
 
+import HomeFeed from '../assets/HomeFeed';
+
 import products from '../amazonproducts.json'
+import FluidCard from './FluidCard';
+import FluidCardGrid from './FluidCardGrid';
 
 const Home = () => {
   const billboard = 
@@ -11,13 +15,26 @@ const Home = () => {
     "https://m.media-amazon.com/images/I/71+ddQwJCBL._SX3000_.jpg"
   ];
 
-  console.log(products)
     
   return (
     <HomeContainer>
         <Billboard className="billboard" data={billboard}/>
         <div className="card-layout">
-          
+          {
+            HomeFeed.map((item)=>{
+              console.log(item)
+              if(item.items.length>1){
+                // return (
+                //   <FluidCardGrid head={item.head} data={item.items} />
+                // )
+              }
+              else {
+                return (
+                  <FluidCard head={item.head} data={item.items} />
+                )
+              }
+            })
+          }
         </div>
     </HomeContainer>
   )
@@ -25,9 +42,17 @@ const Home = () => {
 
  const HomeContainer = styled.div`
     position: relative;
+    border: 1px solid;
+    
     .card-layout {
       z-index: 5;
-      height: 900px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid;
+      gap: 10px;
+      margin: 0 auto;
+      width: 95%;
     }
  `;
 
