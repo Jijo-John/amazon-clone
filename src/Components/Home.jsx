@@ -4,7 +4,6 @@ import Billboard from './Billboard';
 
 import HomeFeed from '../assets/HomeFeed';
 
-import products from '../amazonproducts.json'
 import FluidCard from './FluidCard';
 import FluidCardGrid from './FluidCardGrid';
 
@@ -24,9 +23,9 @@ const Home = () => {
             HomeFeed.map((item)=>{
               console.log(item)
               if(item.items.length>1){
-                // return (
-                //   <FluidCardGrid head={item.head} data={item.items} />
-                // )
+                return (
+                  <FluidCardGrid head={item.head} data={item.items} />
+                )
               }
               else {
                 return (
@@ -46,14 +45,30 @@ const Home = () => {
     
     .card-layout {
       z-index: 5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 10px;
-      margin: 0 auto;
+      margin: auto;
       width: 95%;
     }
+
+    /*Here Desktop Based Css to work below styles*/
+    //Mobile devices
+    @media screen and (max-width: 480px){
+      .card-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    //iPads, Tablets
+    @media screen and (max-width: 768px){
+      .card-layout {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+    //Small screens, laptops
+    @media screen and (max-width: 1024px){}
+    //Desktops, large screens
+    @media screen and (max-width: 1200px){}
  `;
 
 export default Home
